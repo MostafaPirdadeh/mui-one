@@ -1,7 +1,7 @@
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/feed";
 import Rightbar from "./components/Rightbar";
-import Navbaraassaaa
+import Navbar from "./components/Navbar"
 import { Box, Stack } from "@mui/material";
 
 function App() {
