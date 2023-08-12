@@ -5,11 +5,13 @@ import {
   Badge,
   Box,
   InputBase,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
   styled,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
@@ -33,11 +35,14 @@ const Icons = styled(Box)(({ theme }) => ({
 const UserBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "20px",
-  [theme.breakpoints.up("sm")]: { disply: "none" },
+  gap: "10px",
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
 }));
 
 const Navbar = () => {
+  const [open,setOpen]=useState(false)
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -58,15 +63,35 @@ const Navbar = () => {
           <Avatar
             sx={{ width: "30", height: "30" }}
             src="https://media.licdn.com/dms/image/C4D03AQHt_Q2VUFZKjA/profile-displayphoto-shrink_400_400/0/1644404197795?e=1697068800&v=beta&t=MU4e7EA38VIfTWIEQdDNtB4hwUu40c5sq_wwOuP0oBU"
+            onClick={e=>setOpen(true)}
           />
-          <UserBox>
-            <Avatar
-              sx={{ width: "30", height: "30" }}
-              src="https://media.licdn.com/dms/image/C4D03AQHt_Q2VUFZKjA/profile-displayphoto-shrink_400_400/0/1644404197795?e=1697068800&v=beta&t=MU4e7EA38VIfTWIEQdDNtB4hwUu40c5sq_wwOuP0oBU"
-            />
-          </UserBox>
         </Icons>
+        <UserBox onClick={e=>setOpen(true)}>
+          <Avatar
+            sx={{ width: "30", height: "30" }}
+            src="https://media.licdn.com/dms/image/C4D03AQHt_Q2VUFZKjA/profile-displayphoto-shrink_400_400/0/1644404197795?e=1697068800&v=beta&t=MU4e7EA38VIfTWIEQdDNtB4hwUu40c5sq_wwOuP0oBU"
+          />
+          <Typography>Mostafa</Typography>
+        </UserBox>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={open}
+        onClose={e=>setOpen(false)}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
