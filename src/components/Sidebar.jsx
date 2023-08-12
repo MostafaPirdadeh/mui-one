@@ -9,6 +9,7 @@ const Sidebar = () => {
       p={2}
       sx={{ display: { xs: "none", sm: "block" } }}
     >
+        <Box position={"fixed"}>
         <List>
             <ListItem disablePadding>
                 <ListItemButton Component="a" href="#Home">
@@ -96,6 +97,7 @@ const Sidebar = () => {
                 </ListItemButton>
             </ListItem>
         </List>
+        </Box>
     </Box>
   );
 };
